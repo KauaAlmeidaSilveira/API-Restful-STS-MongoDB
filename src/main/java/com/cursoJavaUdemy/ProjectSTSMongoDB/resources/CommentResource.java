@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cursoJavaUdemy.ProjectSTSMongoDB.domain.Post;
-import com.cursoJavaUdemy.ProjectSTSMongoDB.services.PostService;
+import com.cursoJavaUdemy.ProjectSTSMongoDB.domain.Comment;
+import com.cursoJavaUdemy.ProjectSTSMongoDB.services.CommentService;
 
 @RestController
-@RequestMapping(value="/posts")
-public class PostResource {
+@RequestMapping(value="/comments")
+public class CommentResource {
 
 	@Autowired
-	PostService service;
+	CommentService service;
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<Post>> findAll(){
-		List<Post> list = service.findAll();
+	public ResponseEntity<List<Comment>> findAll(){
+		List<Comment> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
- 	public ResponseEntity<Post> findById(@PathVariable String id) {
-		Post obj = service.findById(id);
+ 	public ResponseEntity<Comment> findById(@PathVariable String id) {
+		Comment obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	

@@ -1,9 +1,12 @@
 package com.cursoJavaUdemy.ProjectSTSMongoDB.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.cursoJavaUdemy.ProjectSTSMongoDB.dto.AuthorDTO;
@@ -19,6 +22,9 @@ public class Post implements Serializable {
 	private String body;
 	private AuthorDTO author;
 	
+	@DBRef(lazy = true)
+	private List<Comment> comments = new ArrayList<>();
+	
 	public Post() {
 	}
 
@@ -30,7 +36,7 @@ public class Post implements Serializable {
 		this.body = body;
 		this.author = author;
 	}
-
+	
 	public String getId() {
 		return id;
 	}
@@ -69,6 +75,14 @@ public class Post implements Serializable {
 
 	public void setAuthor(AuthorDTO author) {
 		this.author = author;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 	@Override

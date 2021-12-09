@@ -6,23 +6,23 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cursoJavaUdemy.ProjectSTSMongoDB.domain.Post;
-import com.cursoJavaUdemy.ProjectSTSMongoDB.repositories.PostRepository;
+import com.cursoJavaUdemy.ProjectSTSMongoDB.domain.Comment;
+import com.cursoJavaUdemy.ProjectSTSMongoDB.repositories.CommentRepository;
 import com.cursoJavaUdemy.ProjectSTSMongoDB.services.exception.ObjectNotFoundException;
 
 @Service
-public class PostService {
+public class CommentService {
 
 	// O @Autowired ja instancia o objeto automaticamente
 	@Autowired
-	PostRepository repository;
+	CommentRepository repository;
 
-	public List<Post> findAll() {
+	public List<Comment> findAll() {
 		return repository.findAll();
 	}
 	
-	public Post findById(String id) {
-		Optional<Post> obj = repository.findById(id);
+	public Comment findById(String id) {
+		Optional<Comment> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
 
