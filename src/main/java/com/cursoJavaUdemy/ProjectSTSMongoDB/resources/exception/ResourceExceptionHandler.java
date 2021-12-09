@@ -13,13 +13,10 @@ import com.cursoJavaUdemy.ProjectSTSMongoDB.services.exception.ObjectNotFoundExc
 public class ResourceExceptionHandler {
 
 	@ExceptionHandler(ObjectNotFoundException.class)
-	public ResponseEntity<StandardError> objectNotFound(ObjectNotFoundException e, HttpServletRequest request){
+	public ResponseEntity<StandardError> objectNotFound(ObjectNotFoundException e, HttpServletRequest request) {
 		
 		HttpStatus status = HttpStatus.NOT_FOUND;
-		
-		StandardError err = new StandardError(System.currentTimeMillis(), status.value(), "Não Encontrado", e.getMessage(), request.getRequestURI());
-	
+		StandardError err = new StandardError(System.currentTimeMillis(), status.value(), "Não encontrado", e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(err);
 	}
-	
 }
